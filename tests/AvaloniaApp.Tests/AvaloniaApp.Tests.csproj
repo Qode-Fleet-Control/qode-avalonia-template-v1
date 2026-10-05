@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia.Headless.XUnit" Version="12.1.3" />
+    <!-- 3.2.2, not the template's 4.0.1: Avalonia.Headless.XUnit 12.1.3 is built against
+         xunit.v3 3.2.x, and its [AvaloniaFact] discoverer fails on 4.x (MissingMethodException
+         in TestIntrospectionHelper.GetTestCaseDetails). Move up when Avalonia does. -->
+    <PackageReference Include="xunit.v3.mtp-v2" Version="3.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AvaloniaApp\AvaloniaApp.csproj" />
+  </ItemGroup>
+
+</Project>
