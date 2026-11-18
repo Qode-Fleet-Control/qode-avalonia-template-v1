@@ -21,6 +21,11 @@
          xunit.v3 3.2.x, and its [AvaloniaFact] discoverer fails on 4.x (MissingMethodException
          in TestIntrospectionHelper.GetTestCaseDetails). Move up when Avalonia does. -->
     <PackageReference Include="xunit.v3.mtp-v2" Version="3.2.2" />
+    <!-- global.json pins the Microsoft.Testing.Platform runner, which does not speak VSTest's
+         data collector protocol, so coverlet.collector (and the VSTest style collect flag on
+         dotnet test) fails with a handshake error under it. coverlet.MTP is coverlet's native
+         MTP extension and is what actually produces a coverage file here. -->
+    <PackageReference Include="coverlet.MTP" Version="10.*" />
   </ItemGroup>
 
   <ItemGroup>
